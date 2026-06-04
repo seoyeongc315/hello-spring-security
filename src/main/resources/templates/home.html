@@ -17,7 +17,6 @@
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark mb-4">
     <div class="container">
         <a class="navbar-brand" th:href="@{/home}">HanSung</a>
@@ -43,19 +42,18 @@
 </nav>
 
 <div class="container">
-    <!-- Welcome Card -->
     <div class="welcome-card p-4 mb-4">
         <h4 class="fw-bold mb-1">환영합니다!</h4>
         <p class="mb-1 opacity-75" th:text="${username}"></p>
         <div class="mt-2">
-            <!-- 컨트롤러에서 ROLE_ 접두사를 제거한 문자열 목록을 전달받음 -->
             <span th:each="role : ${roles}"
                   class="badge bg-white text-dark badge-role me-1"
                   th:text="${role}"></span>
         </div>
     </div>
 
-    <!-- Quick Links -->
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+
     <div class="row g-3">
         <div class="col-md-4">
             <div class="card stat-card p-4 h-100">
@@ -76,6 +74,13 @@
                 <h6 class="fw-bold">관리자 대시보드</h6>
                 <p class="text-muted small mb-3">시스템 관리 메뉴입니다. (관리자 전용)</p>
                 <a th:href="@{/admin/dashboard}" class="btn btn-warning btn-sm mt-auto">바로가기</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card p-4 h-100">
+                <h6 class="fw-bold">비밀번호 변경</h6>
+                <p class="text-muted small mb-3">현재 비밀번호 확인 후 새 비밀번호로 변경합니다.</p>
+                <a th:href="@{/user/password}" class="btn btn-outline-primary btn-sm mt-auto">바로가기</a>
             </div>
         </div>
     </div>
